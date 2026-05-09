@@ -8,6 +8,16 @@ import History from './components/History';
 import { useGameState } from './hooks/useGameState';
 import { useHistory } from './hooks/useHistory';
 
+// Couleur du bas du dégradé de chaque écran — couvre le menton iOS
+const CHIN_COLORS = {
+  home:       '#42a5f5',
+  select:     '#42a5f5',
+  round:      '#1e293b',
+  scoreboard: '#42a5f5',
+  endgame:    '#0f3460',
+  history:    '#42a5f5',
+};
+
 export default function App() {
   const [screen, setScreen] = useState('home');
   const { allPlayers, players, scores, roundHistory, startGame, applyRound, isGameOver, getRanking } = useGameState();
@@ -85,6 +95,18 @@ export default function App() {
           onBack={() => setScreen('home')}
         />
       )}
+
+      {/* Couvre le menton iOS (home indicator) avec la bonne couleur */}
+      <div style={{
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: 'env(safe-area-inset-bottom, 0px)',
+        background: CHIN_COLORS[screen] ?? '#1a237e',
+        pointerEvents: 'none',
+        zIndex: 9999,
+      }} />
     </>
   );
 }
