@@ -9,6 +9,7 @@
   position: relative;
   overflow: hidden;
   padding: 20px;
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
 }
 
 /* ── Étoiles fond ── */
