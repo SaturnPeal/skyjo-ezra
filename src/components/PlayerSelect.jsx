@@ -13,9 +13,11 @@ export default function PlayerSelect({ allPlayers, onStart, onBack }) {
   const [selected, setSelected] = useState([]);
 
   function toggle(name) {
-    setSelected(prev =>
-      prev.includes(name) ? prev.filter(p => p !== name) : [...prev, name]
-    );
+    setSelected(prev => {
+      if (prev.includes(name)) return prev.filter(p => p !== name);
+      if (prev.length >= 4) return prev;
+      return [...prev, name];
+    });
   }
 
   return (
@@ -29,7 +31,7 @@ export default function PlayerSelect({ allPlayers, onStart, onBack }) {
         {allPlayers.map(name => (
           <button
             key={name}
-            className={`ps-player-btn ${selected.includes(name) ? 'selected' : ''}`}
+            className={`ps-player-btn ${selected.includes(name) ? 'selected' : ''} ${!selected.includes(name) && selected.length >= 4 ? 'disabled' : ''}`}
             onClick={() => toggle(name)}
           >
             <span className="ps-emoji">{PLAYER_EMOJIS[name]}</span>
@@ -46,7 +48,10 @@ export default function PlayerSelect({ allPlayers, onStart, onBack }) {
       )}
 
       {selected.length < 2 && (
-        <p className="ps-hint">Choisis au moins 2 joueurs</p>
+        <p className="ps-hint">Choisis 2 à 4 joueurs</p>
+      )}
+      {selected.length >= 4 && (
+        <p className="ps-hint">Maximum 4 joueurs</p>
       )}
     </div>
   );

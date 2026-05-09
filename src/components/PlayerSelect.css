@@ -64,6 +64,10 @@
   text-align: left;
 }
 .ps-player-btn:active { transform: scale(0.95); }
+.ps-player-btn.disabled {
+  opacity: 0.35;
+  cursor: default;
+}
 .ps-player-btn.selected {
   background: rgba(255,255,255,0.28);
   border-color: #facc15;
