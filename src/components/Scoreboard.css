@@ -1,0 +1,79 @@
+.scoreboard-screen {
+  min-height: 100dvh;
+  background: linear-gradient(160deg, #1a237e 0%, #1565c0 60%, #42a5f5 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  gap: 20px;
+}
+
+.sb-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  color: white;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.sb-table {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.sb-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 16px 20px;
+  font-family: 'Fredoka One', cursive;
+  color: white;
+  font-size: 1.4rem;
+  border: 2px solid transparent;
+  transition: transform 0.15s;
+}
+.sb-row.sb-leader {
+  background: rgba(250,204,21,0.2);
+  border-color: rgba(250,204,21,0.5);
+  box-shadow: 0 0 20px rgba(250,204,21,0.2);
+}
+
+.sb-rank { font-size: 1.6rem; width: 36px; text-align: center; }
+.sb-name { flex: 1; }
+.sb-round-score { color: #93c5fd; width: 60px; text-align: center; font-size: 1.3rem; }
+.sb-total { color: #fde68a; width: 60px; text-align: right; font-size: 1.5rem; font-weight: bold; }
+
+.sb-legend {
+  display: flex;
+  width: 100%;
+  max-width: 480px;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-right: 20px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+}
+.sb-legend span:first-child { margin-right: 14px; }
+
+.btn-next-round, .btn-endgame {
+  min-height: 76px;
+  padding: 0 36px;
+  border-radius: 24px;
+  border: none;
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  transition: transform 0.12s;
+}
+.btn-next-round { background: linear-gradient(135deg, #3b82f6, #8b5cf6); }
+.btn-endgame    { background: linear-gradient(135deg, #f59e0b, #f97316); }
+.btn-next-round:active, .btn-endgame:active { transform: scale(0.93); }

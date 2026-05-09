@@ -1,0 +1,217 @@
+.re-screen {
+  min-height: 100dvh;
+  background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 16px 24px;
+  gap: 14px;
+}
+
+/* ── Header ── */
+.re-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.re-progress {
+  display: flex;
+  gap: 8px;
+}
+.re-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transition: background 0.2s;
+}
+.re-dot.done   { background: #22c55e; }
+.re-dot.active { background: #facc15; box-shadow: 0 0 8px #facc15; }
+
+.re-player-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2.2rem, 8vw, 3.4rem);
+  color: #facc15;
+  margin: 0;
+  text-shadow: 0 2px 16px rgba(250,204,21,0.4);
+}
+
+/* ── Total ── */
+.re-total-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 12px 48px;
+  border: 2px solid rgba(255,255,255,0.12);
+  gap: 2px;
+}
+.re-total-num {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2.8rem, 10vw, 4.5rem);
+  line-height: 1;
+  transition: color 0.2s;
+}
+.re-card-count {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ── Grille des valeurs ── */
+.re-values-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.re-value-btn {
+  height: 72px;
+  border-radius: 16px;
+  border: 3px solid rgba(255,255,255,0.25);
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  transition: transform 0.12s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.re-value-btn:active {
+  transform: scale(0.86) !important;
+}
+
+/* ── Cartes tapées ── */
+.re-tapped-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  max-width: 500px;
+}
+.re-tapped-chip {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+.re-tapped-more {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+  padding: 4px 8px;
+}
+
+/* ── Actions ── */
+.re-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-undo {
+  min-height: 64px;
+  padding: 0 24px;
+  border-radius: 18px;
+  border: 2px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.12s;
+}
+.btn-undo:active { transform: scale(0.93); }
+
+.btn-next-player {
+  min-height: 70px;
+  padding: 0 32px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transition: transform 0.12s;
+}
+.btn-next-player:active { transform: scale(0.93); }
+
+/* ── Résumé manche ── */
+.round-summary-screen {
+  min-height: 100dvh;
+  background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  gap: 24px;
+}
+.rs-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  color: white;
+  margin: 0;
+}
+.rs-table {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 440px;
+}
+.rs-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 14px 20px;
+  font-family: 'Fredoka One', cursive;
+  color: white;
+  font-size: 1.3rem;
+}
+.rs-name { flex: 1; }
+.rs-score { color: #93c5fd; font-size: 1.5rem; width: 60px; text-align: center; }
+.rs-total { color: #fde68a; font-size: 1.5rem; width: 70px; text-align: right; }
+
+.btn-validate {
+  min-height: 76px;
+  padding: 0 36px;
+  border-radius: 24px;
+  border: none;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  transition: transform 0.12s;
+}
+.btn-validate:active { transform: scale(0.93); }
+
+/* ── Landscape iPad ── */
+@media (orientation: landscape) {
+  .re-values-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  .re-value-btn {
+    height: 62px;
+  }
+}

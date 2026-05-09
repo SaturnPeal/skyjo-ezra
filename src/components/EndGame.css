@@ -1,0 +1,88 @@
+.endgame-screen {
+  min-height: 100dvh;
+  background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  gap: 24px;
+}
+
+.eg-winner-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(250,204,21,0.12);
+  border: 3px solid rgba(250,204,21,0.4);
+  border-radius: 28px;
+  padding: 28px 40px;
+  box-shadow: 0 0 40px rgba(250,204,21,0.2);
+}
+
+.eg-trophy {
+  font-size: 5rem;
+  animation: trophy-bounce 1s ease-in-out infinite alternate;
+}
+@keyframes trophy-bounce {
+  from { transform: translateY(0) rotate(-5deg); }
+  to   { transform: translateY(-12px) rotate(5deg); }
+}
+
+.eg-winner-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2.2rem, 8vw, 3.8rem);
+  color: #facc15;
+  margin: 8px 0 4px;
+  text-shadow: 0 0 20px rgba(250,204,21,0.6);
+}
+.eg-winner-sub {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem;
+  color: white;
+  margin: 0;
+}
+.eg-winner-score {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.6);
+  margin: 6px 0 0;
+}
+
+.eg-ranking {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+.eg-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 14px 18px;
+  font-family: 'Fredoka One', cursive;
+  color: white;
+  font-size: 1.3rem;
+}
+.eg-row-0 { background: rgba(250,204,21,0.18); }
+.eg-medal { font-size: 1.8rem; width: 36px; text-align: center; }
+.eg-name { flex: 1; }
+.eg-score { color: #93c5fd; }
+
+.btn-new-game-end {
+  min-height: 76px;
+  padding: 0 36px;
+  border-radius: 24px;
+  border: none;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  transition: transform 0.12s;
+}
+.btn-new-game-end:active { transform: scale(0.93); }

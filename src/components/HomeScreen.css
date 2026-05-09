@@ -1,0 +1,170 @@
+/* ── Page d'accueil ── */
+.home-screen {
+  min-height: 100dvh;
+  background: linear-gradient(160deg, #1a237e 0%, #1565c0 50%, #42a5f5 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* ── Étoiles fond ── */
+.stars-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.star {
+  animation: star-pulse 3s ease-in-out infinite;
+}
+.star-0 { animation-delay: 0s; }
+.star-1 { animation-delay: 1s; }
+.star-2 { animation-delay: 2s; }
+@keyframes star-pulse {
+  0%, 100% { opacity: 0.4; r: attr(r); }
+  50% { opacity: 1; }
+}
+
+/* ── Cartes flottantes ── */
+.floating-card {
+  position: absolute;
+  pointer-events: none;
+  animation: float-card 6s ease-in-out infinite;
+  opacity: 0.75;
+}
+@keyframes float-card {
+  0%   { transform: translateY(0px) rotate(-8deg); }
+  25%  { transform: translateY(-18px) rotate(-3deg); }
+  50%  { transform: translateY(-8px) rotate(5deg); }
+  75%  { transform: translateY(-22px) rotate(0deg); }
+  100% { transform: translateY(0px) rotate(-8deg); }
+}
+
+/* ── Créatures ── */
+.creature {
+  position: absolute;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+}
+.creature-left  { bottom: 12%; left: 2%; }
+.creature-right { top: 18%; right: 3%; }
+.creature-bottom { bottom: 3%; right: 20%; }
+
+.monster { display: block; }
+
+.monster-blobby {
+  animation: wiggle 3s ease-in-out infinite;
+}
+.monster-zappy {
+  animation: wiggle 4s ease-in-out infinite 1s;
+}
+.monster-rounchy {
+  animation: bounce-small 2.5s ease-in-out infinite 0.5s;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  20%       { transform: rotate(-6deg) scale(1.03); }
+  40%       { transform: rotate(5deg) scale(0.97); }
+  60%       { transform: rotate(-3deg) scale(1.02); }
+  80%       { transform: rotate(4deg) scale(0.98); }
+}
+@keyframes bounce-small {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ── Contenu principal ── */
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  z-index: 10;
+  text-align: center;
+}
+
+.home-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2.4rem, 7vw, 4.2rem);
+  color: white;
+  text-shadow: 0 3px 16px rgba(0,0,0,0.4), 0 1px 0 rgba(0,0,0,0.2);
+  margin: 0;
+  animation: title-pulse 3s ease-in-out infinite;
+  line-height: 1.1;
+}
+@keyframes title-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.04); }
+}
+
+.home-subtitle {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  color: rgba(255,255,255,0.85);
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* ── Boutons ── */
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.btn-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 80px;
+  border-radius: 24px;
+  border: none;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3), 0 2px 0 rgba(0,0,0,0.2) inset;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  padding: 0 28px;
+  letter-spacing: 0.02em;
+  WebkitTapHighlightColor: transparent;
+}
+.btn-home:active {
+  transform: scale(0.93);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.btn-new-game {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+}
+.btn-history {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.btn-icon {
+  font-size: 2rem;
+}
+
+/* ── Landscape iPad ── */
+@media (orientation: landscape) and (min-height: 500px) {
+  .home-buttons {
+    flex-direction: row;
+    max-width: 680px;
+  }
+  .btn-home {
+    flex: 1;
+  }
+  .creature-bottom {
+    display: none;
+  }
+}
