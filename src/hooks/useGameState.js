@@ -6,9 +6,11 @@ export function useGameState() {
   const [players, setPlayers] = useState([]);
   const [scores, setScores] = useState({});
   const [roundHistory, setRoundHistory] = useState([]);
+  const [scoreLimit, setScoreLimit] = useState(100);
 
-  function startGame(selectedPlayers) {
+  function startGame(selectedPlayers, limit = 100) {
     setPlayers(selectedPlayers);
+    setScoreLimit(limit);
     const initial = {};
     selectedPlayers.forEach(p => (initial[p] = 0));
     setScores(initial);
@@ -27,7 +29,7 @@ export function useGameState() {
   }
 
   function isGameOver() {
-    return Object.values(scores).some(s => s >= 100);
+    return Object.values(scores).some(s => s >= scoreLimit);
   }
 
   function getRanking() {
@@ -38,6 +40,7 @@ export function useGameState() {
     allPlayers: ALL_PLAYERS,
     players,
     scores,
+    scoreLimit,
     roundHistory,
     startGame,
     applyRound,

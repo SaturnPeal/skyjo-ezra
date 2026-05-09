@@ -20,11 +20,11 @@ const CHIN_COLORS = {
 
 export default function App() {
   const [screen, setScreen] = useState('home');
-  const { allPlayers, players, scores, roundHistory, startGame, applyRound, isGameOver, getRanking } = useGameState();
+  const { allPlayers, players, scores, scoreLimit, roundHistory, startGame, applyRound, isGameOver, getRanking } = useGameState();
   const { history, saveGame } = useHistory();
 
-  function handleStartGame(selected) {
-    startGame(selected);
+  function handleStartGame(selected, limit) {
+    startGame(selected, limit);
     setScreen('round');
   }
 
@@ -77,6 +77,7 @@ export default function App() {
         <Scoreboard
           players={players}
           scores={scores}
+          scoreLimit={scoreLimit}
           roundHistory={roundHistory}
           onNextRound={handleNextRound}
           onEndGame={handleEndGame}

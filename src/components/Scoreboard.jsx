@@ -1,15 +1,15 @@
 import './Scoreboard.css';
 
-export default function Scoreboard({ players, scores, roundHistory, onNextRound, onEndGame }) {
+export default function Scoreboard({ players, scores, scoreLimit, roundHistory, onNextRound, onEndGame }) {
   const ranking = [...players].sort((a, b) => scores[a] - scores[b]);
-  const leader = ranking[0];
   const lastRound = roundHistory[roundHistory.length - 1] || {};
   const roundNum = roundHistory.length;
-  const hasGameOver = players.some(p => scores[p] >= 100);
+  const hasGameOver = players.some(p => scores[p] >= scoreLimit);
 
   return (
     <div className="scoreboard-screen">
       <h2 className="sb-title">Manche {roundNum} terminée !</h2>
+      <p className="sb-limit">🏁 Fin à {scoreLimit} pts</p>
 
       <div className="sb-table">
         {ranking.map((p, i) => (

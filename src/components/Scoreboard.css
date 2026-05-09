@@ -10,6 +10,13 @@
   gap: 20px;
 }
 
+.sb-limit {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  margin: -12px 0 0;
+}
+
 .sb-title {
   font-family: 'Fredoka One', cursive;
   font-size: clamp(1.8rem, 5vw, 2.6rem);
