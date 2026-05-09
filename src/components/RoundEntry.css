@@ -1,5 +1,5 @@
 .re-screen {
-  height: 100dvh;
+  height: calc(100dvh + env(safe-area-inset-bottom, 0px));
   background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%);
   display: flex;
   flex-direction: column;
