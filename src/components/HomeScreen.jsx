@@ -164,7 +164,16 @@ export default function HomeScreen({ onNewGame, onHistory }) {
 
       {/* Contenu principal */}
       <div className="home-content">
-        <h1 className="home-title">🃏 Skyjo d'Ezra</h1>
+        <h1 className="home-title">
+          <svg width="44" height="60" viewBox="0 0 44 60" style={{verticalAlign:'middle', marginRight:'10px', filter:'drop-shadow(0 2px 6px rgba(0,0,0,0.4))'}}>
+            <rect x="1" y="1" width="42" height="58" rx="8" fill="#C62828" stroke="rgba(255,255,255,0.35)" strokeWidth="2"/>
+            <rect x="5" y="5" width="34" height="50" rx="5" fill="rgba(255,255,255,0.1)"/>
+            <text x="22" y="36" textAnchor="middle" dominantBaseline="middle" fill="white" fontSize="22" fontWeight="900" fontFamily="Fredoka One, cursive">12</text>
+            <text x="9" y="14" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="10" fontFamily="Fredoka One, cursive">12</text>
+            <text x="35" y="47" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="10" fontFamily="Fredoka One, cursive" transform="rotate(180 35 47)">12</text>
+          </svg>
+          Skyjo d'Ezra
+        </h1>
         <p className="home-subtitle">Le jeu des familles !</p>
 
         <div className="home-buttons">
