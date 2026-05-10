@@ -18,9 +18,22 @@ const CHIN_COLORS = {
   history:    '#42a5f5',
 };
 
+function getInitialScreen() {
+  try {
+    const raw = localStorage.getItem('skyjo_game_in_progress');
+    if (!raw) return 'home';
+    const saved = JSON.parse(raw);
+    if (!saved?.players?.length) return 'home';
+    if (saved.roundHistory?.length > 0) return 'scoreboard';
+    return 'round';
+  } catch {
+    return 'home';
+  }
+}
+
 export default function App() {
-  const [screen, setScreen] = useState('home');
-  const { allPlayers, players, scores, scoreLimit, roundHistory, startGame, applyRound, isGameOver, getRanking } = useGameState();
+  const [screen, setScreen] = useState(getInitialScreen);
+  const { allPlayers, players, scores, scoreLimit, roundHistory, startGame, applyRound, clearGame, isGameOver, getRanking } = useGameState();
   const { history, saveGame } = useHistory();
 
   function handleStartGame(selected, limit) {
@@ -44,10 +57,12 @@ export default function App() {
       scores,
       rounds: roundHistory.length,
     });
+    clearGame();
     setScreen('endgame');
   }
 
   function handleNewGame() {
+    clearGame();
     setScreen('home');
   }
 
