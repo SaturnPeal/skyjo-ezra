@@ -50,6 +50,19 @@ export default function App() {
     setScreen('round');
   }
 
+  function handleMenu() {
+    setScreen('home');
+  }
+
+  function handleResume() {
+    // Reprend là où on en était
+    if (roundHistory.length > 0) {
+      setScreen('scoreboard');
+    } else {
+      setScreen('round');
+    }
+  }
+
   function handleEndGame() {
     saveGame({
       date: new Date().toISOString(),
@@ -57,7 +70,6 @@ export default function App() {
       scores,
       rounds: roundHistory.length,
     });
-    clearGame();
     setScreen('endgame');
   }
 
@@ -72,6 +84,8 @@ export default function App() {
         <HomeScreen
           onNewGame={() => setScreen('select')}
           onHistory={() => setScreen('history')}
+          onResume={handleResume}
+          hasSavedGame={players.length > 0}
         />
       )}
       {screen === 'select' && (
@@ -86,6 +100,7 @@ export default function App() {
           players={players}
           scores={scores}
           onRoundComplete={handleRoundComplete}
+          onMenu={handleMenu}
         />
       )}
       {screen === 'scoreboard' && (
@@ -96,6 +111,7 @@ export default function App() {
           roundHistory={roundHistory}
           onNextRound={handleNextRound}
           onEndGame={handleEndGame}
+          onMenu={handleMenu}
         />
       )}
       {screen === 'endgame' && (

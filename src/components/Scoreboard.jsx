@@ -1,6 +1,6 @@
 import './Scoreboard.css';
 
-export default function Scoreboard({ players, scores, scoreLimit, roundHistory, onNextRound, onEndGame }) {
+export default function Scoreboard({ players, scores, scoreLimit, roundHistory, onNextRound, onEndGame, onMenu }) {
   const ranking = [...players].sort((a, b) => scores[a] - scores[b]);
   const lastRound = roundHistory[roundHistory.length - 1] || {};
   const roundNum = roundHistory.length;
@@ -8,6 +8,9 @@ export default function Scoreboard({ players, scores, scoreLimit, roundHistory, 
 
   return (
     <div className="scoreboard-screen">
+      <div className="sb-top-bar">
+        <button className="btn-menu" onClick={onMenu}>☰</button>
+      </div>
       <h2 className="sb-title">Manche {roundNum} terminée !</h2>
       <p className="sb-limit">🏁 Fin à {scoreLimit} pts</p>
 

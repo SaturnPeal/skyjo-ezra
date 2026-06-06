@@ -11,7 +11,7 @@ function getCardColor(value) {
   return '#C62828';
 }
 
-export default function RoundEntry({ players, scores, onRoundComplete }) {
+export default function RoundEntry({ players, scores, onRoundComplete, onMenu }) {
   const [playerIdx, setPlayerIdx] = useState(0);
   const [roundScores, setRoundScores] = useState(
     () => Object.fromEntries(players.map(p => [p, 0]))
@@ -45,6 +45,7 @@ export default function RoundEntry({ players, scores, onRoundComplete }) {
     <div className="re-screen">
       {/* Header */}
       <div className="re-header">
+        <button className="btn-menu" onClick={onMenu}>☰</button>
         <div className="re-progress">
           {players.map((p, i) => (
             <div key={p} className={`re-dot ${i < playerIdx ? 'done' : i === playerIdx ? 'active' : ''}`} />

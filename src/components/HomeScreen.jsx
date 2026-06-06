@@ -142,7 +142,7 @@ function Stars() {
   );
 }
 
-export default function HomeScreen({ onNewGame, onHistory }) {
+export default function HomeScreen({ onNewGame, onHistory, onResume, hasSavedGame }) {
   return (
     <div className="home-screen">
       <Stars />
@@ -177,6 +177,12 @@ export default function HomeScreen({ onNewGame, onHistory }) {
         <p className="home-subtitle">Le jeu des familles !</p>
 
         <div className="home-buttons">
+          {hasSavedGame && (
+            <button className="btn-home btn-resume" onClick={onResume}>
+              <span className="btn-icon">▶️</span>
+              <span>Reprendre la partie</span>
+            </button>
+          )}
           <button className="btn-home btn-new-game" onClick={onNewGame}>
             <span className="btn-icon">🎮</span>
             <span>Nouvelle partie</span>
