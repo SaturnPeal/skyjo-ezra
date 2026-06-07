@@ -2,7 +2,7 @@
   <rect x="4" y="2" width="56" height="60" rx="10" fill="#C62828"/>
   <rect x="4" y="2" width="56" height="60" rx="10" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
   <rect x="9" y="7" width="46" height="50" rx="7" fill="rgba(255,255,255,0.08)"/>
-  <text x="32" y="40" text-anchor="middle" dominant-baseline="middle"
+  <text x="32" y="35" text-anchor="middle" dominant-baseline="middle"
     fill="white" font-size="28" font-weight="900"
     font-family="Arial Rounded MT Bold, Arial, sans-serif">12</text>
   <text x="13" y="17" text-anchor="middle" dominant-baseline="middle"
