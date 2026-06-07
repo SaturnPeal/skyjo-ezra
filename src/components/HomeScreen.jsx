@@ -1,3 +1,5 @@
+import { useState, useRef, useCallback } from 'react';
+import confetti from 'canvas-confetti';
 import './HomeScreen.css';
 
 const FLOATING_CARDS = [
@@ -11,9 +13,45 @@ const FLOATING_CARDS = [
   { color: '#2E7D32', value: '1',  style: { top: '75%', right: '10%', animationDelay: '4s', animationDuration: '9s' } },
 ];
 
+const SPARKLES = ['⭐', '✨', '💫', '🌟', '🎉', '🎊', '🪄', '🌈'];
+
 function FloatingCard({ color, value, style }) {
+  const [popping, setPopping] = useState(false);
+  const [sparkle, setSparkle] = useState(null);
+  const ref = useRef(null);
+
+  const handleTap = useCallback(() => {
+    if (popping) return;
+
+    // Position pour les confettis
+    const rect = ref.current?.getBoundingClientRect();
+    if (rect) {
+      const x = (rect.left + rect.width / 2) / window.innerWidth;
+      const y = (rect.top + rect.height / 2) / window.innerHeight;
+      confetti({
+        particleCount: 40,
+        spread: 80,
+        origin: { x, y },
+        colors: [color, '#facc15', '#ffffff', '#a855f7', '#22c55e'],
+        scalar: 0.9,
+        startVelocity: 22,
+        gravity: 1.2,
+      });
+    }
+
+    // Sparkle aléatoire
+    setSparkle(SPARKLES[Math.floor(Math.random() * SPARKLES.length)]);
+    setPopping(true);
+    setTimeout(() => { setPopping(false); setSparkle(null); }, 600);
+  }, [popping, color]);
+
   return (
-    <div className="floating-card" style={style}>
+    <div
+      ref={ref}
+      className={`floating-card ${popping ? 'popping' : ''}`}
+      style={style}
+      onClick={handleTap}
+    >
       <svg width="52" height="72" viewBox="0 0 52 72">
         <rect x="2" y="2" width="48" height="68" rx="8" fill={color} stroke="rgba(255,255,255,0.4)" strokeWidth="2"/>
         <rect x="6" y="6" width="40" height="60" rx="5" fill="rgba(255,255,255,0.08)"/>
@@ -24,6 +62,7 @@ function FloatingCard({ color, value, style }) {
         <text x="42" y="57" textAnchor="middle" dominantBaseline="middle" fill="rgba(255,255,255,0.7)"
           fontSize="11" fontFamily="Fredoka One, cursive" transform="rotate(180 42 57)">{value}</text>
       </svg>
+      {sparkle && <div className="card-sparkle">{sparkle}</div>}
     </div>
   );
 }
