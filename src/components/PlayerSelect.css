@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px 20px 40px;
+  padding: max(52px, env(safe-area-inset-top, 0px)) 20px max(40px, env(safe-area-inset-bottom, 0px));
   gap: 20px;
 }
 
@@ -43,13 +43,15 @@
   gap: 14px;
   width: 100%;
   max-width: 480px;
+  flex: 1;
+  justify-content: center;
 }
 
 .ps-player-btn {
   display: flex;
   align-items: center;
   gap: 16px;
-  min-height: 80px;
+  min-height: 90px;
   border-radius: 20px;
   border: 3px solid rgba(255,255,255,0.2);
   background: rgba(255,255,255,0.12);
@@ -62,6 +64,10 @@
   text-align: left;
 }
 .ps-player-btn:active { transform: scale(0.95); }
+.ps-player-btn.disabled {
+  opacity: 0.35;
+  cursor: default;
+}
 .ps-player-btn.selected {
   background: rgba(255,255,255,0.28);
   border-color: #facc15;
@@ -102,4 +108,43 @@
   font-size: 1.1rem;
   color: rgba(255,255,255,0.65);
   margin: 0;
+}
+
+/* ── Mode de jeu ── */
+.ps-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 480px;
+}
+.ps-mode-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.9);
+  margin: 0;
+}
+.ps-mode-btns {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+.ps-mode-btn {
+  flex: 1;
+  min-height: 72px;
+  border-radius: 20px;
+  border: 3px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.12s, background 0.15s, border-color 0.15s;
+}
+.ps-mode-btn:active { transform: scale(0.95); }
+.ps-mode-btn.active {
+  background: rgba(255,255,255,0.28);
+  border-color: #facc15;
+  box-shadow: 0 0 20px rgba(250,204,21,0.4);
 }

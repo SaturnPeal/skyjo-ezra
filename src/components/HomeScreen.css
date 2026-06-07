@@ -9,6 +9,7 @@
   position: relative;
   overflow: hidden;
   padding: 20px;
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
 }
 
 /* ── Étoiles fond ── */
@@ -144,6 +145,9 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
+.btn-resume {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
 .btn-new-game {
   background: linear-gradient(135deg, #f59e0b, #f97316);
 }
