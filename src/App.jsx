@@ -33,11 +33,11 @@ function getInitialScreen() {
 
 export default function App() {
   const [screen, setScreen] = useState(getInitialScreen);
-  const { allPlayers, players, scores, scoreLimit, roundHistory, startGame, applyRound, clearGame, isGameOver, getRanking } = useGameState();
+  const { allPlayers, players, scores, scoreLimit, timeLimit, startTime, roundHistory, startGame, applyRound, clearGame, isGameOver, getRanking } = useGameState();
   const { history, saveGame } = useHistory();
 
-  function handleStartGame(selected, limit) {
-    startGame(selected, limit);
+  function handleStartGame(selected, limit, timeLimitMinutes) {
+    startGame(selected, limit, timeLimitMinutes);
     setScreen('round');
   }
 
@@ -108,6 +108,8 @@ export default function App() {
           players={players}
           scores={scores}
           scoreLimit={scoreLimit}
+          timeLimit={timeLimit}
+          startTime={startTime}
           roundHistory={roundHistory}
           onNextRound={handleNextRound}
           onEndGame={handleEndGame}

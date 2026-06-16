@@ -1,10 +1,11 @@
 import './Scoreboard.css';
 
-export default function Scoreboard({ players, scores, scoreLimit, roundHistory, onNextRound, onEndGame, onMenu }) {
+export default function Scoreboard({ players, scores, scoreLimit, timeLimit, startTime, roundHistory, onNextRound, onEndGame, onMenu }) {
   const ranking = [...players].sort((a, b) => scores[a] - scores[b]);
   const lastRound = roundHistory[roundHistory.length - 1] || {};
   const roundNum = roundHistory.length;
   const hasGameOver = players.some(p => scores[p] >= scoreLimit);
+  const timeUp = !hasGameOver && timeLimit && startTime && (Date.now() - startTime) >= timeLimit * 60 * 1000;
 
   return (
     <div className="scoreboard-screen">
@@ -34,11 +35,27 @@ export default function Scoreboard({ players, scores, scoreLimit, roundHistory, 
         <span>Total</span>
       </div>
 
-      {hasGameOver ? (
+      {hasGameOver && (
         <button className="btn-endgame" onClick={onEndGame}>
           🏆 Voir le gagnant !
         </button>
-      ) : (
+      )}
+
+      {!hasGameOver && timeUp && (
+        <div className="sb-timeup">
+          <p className="sb-timeup-text">⏰ Temps écoulé !</p>
+          <div className="sb-timeup-btns">
+            <button className="btn-next-round" onClick={onNextRound}>
+              ▶️ Continuer
+            </button>
+            <button className="btn-endgame" onClick={onEndGame}>
+              🏆 Terminer
+            </button>
+          </div>
+        </div>
+      )}
+
+      {!hasGameOver && !timeUp && (
         <button className="btn-next-round" onClick={onNextRound}>
           Manche suivante →
         </button>

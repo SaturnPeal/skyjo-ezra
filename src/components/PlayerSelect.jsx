@@ -9,9 +9,17 @@ const PLAYER_EMOJIS = {
   'Marraine': '⭐',
 };
 
+const TIME_OPTIONS = [
+  { label: 'Sans chrono', value: null },
+  { label: '15 min', value: 15 },
+  { label: '30 min', value: 30 },
+  { label: '45 min', value: 45 },
+];
+
 export default function PlayerSelect({ allPlayers, onStart, onBack }) {
   const [selected, setSelected] = useState([]);
   const [limit, setLimit] = useState(100);
+  const [timeLimit, setTimeLimit] = useState(null);
 
   function toggle(name) {
     setSelected(prev => {
@@ -66,8 +74,24 @@ export default function PlayerSelect({ allPlayers, onStart, onBack }) {
         </div>
       </div>
 
+      {/* Sélection du chrono */}
+      <div className="ps-mode">
+        <p className="ps-mode-label">⏱️ Chrono :</p>
+        <div className="ps-mode-btns">
+          {TIME_OPTIONS.map(opt => (
+            <button
+              key={opt.label}
+              className={`ps-mode-btn ${timeLimit === opt.value ? 'active' : ''}`}
+              onClick={() => setTimeLimit(opt.value)}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {canStart && (
-        <button className="btn-start" onClick={() => onStart(selected, limit)}>
+        <button className="btn-start" onClick={() => onStart(selected, limit, timeLimit)}>
           🚀 Commencer !
         </button>
       )}

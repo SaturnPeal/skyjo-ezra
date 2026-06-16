@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <!-- Fond dégradé bleu (couleur de l'app) -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a237e"/>
+      <stop offset="60%" stop-color="#1565c0"/>
+      <stop offset="100%" stop-color="#42a5f5"/>
+    </linearGradient>
+    <linearGradient id="card-shine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.2)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fond -->
+  <rect width="180" height="180" fill="url(#bg)"/>
+
+  <!-- Étoiles décoratives -->
+  <circle cx="22" cy="28" r="4" fill="rgba(255,255,255,0.5)"/>
+  <circle cx="158" cy="20" r="3" fill="rgba(255,255,255,0.4)"/>
+  <circle cx="168" cy="60" r="2" fill="rgba(255,255,255,0.35)"/>
+  <circle cx="15" cy="140" r="3" fill="rgba(255,255,255,0.4)"/>
+  <circle cx="165" cy="150" r="4" fill="rgba(255,255,255,0.5)"/>
+  <circle cx="35" cy="165" r="2.5" fill="rgba(255,255,255,0.35)"/>
+
+  <!-- Petites cartes décoratives en arrière plan -->
+  <!-- Carte violette à gauche -->
+  <g transform="rotate(-18, 32, 90)">
+    <rect x="8" y="55" width="48" height="66" rx="8" fill="#7B2D8B" opacity="0.85"/>
+    <rect x="12" y="59" width="40" height="58" rx="5" fill="rgba(255,255,255,0.07)"/>
+    <text x="32" y="96" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="20" font-weight="900" font-family="Arial Rounded MT Bold, Arial, sans-serif">-2</text>
+  </g>
+  <!-- Carte verte à droite -->
+  <g transform="rotate(15, 148, 90)">
+    <rect x="124" y="55" width="48" height="66" rx="8" fill="#2E7D32" opacity="0.85"/>
+    <rect x="128" y="59" width="40" height="58" rx="5" fill="rgba(255,255,255,0.07)"/>
+    <text x="148" y="96" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="20" font-weight="900" font-family="Arial Rounded MT Bold, Arial, sans-serif">3</text>
+  </g>
+
+  <!-- Carte principale rouge au centre -->
+  <rect x="52" y="30" width="76" height="106" rx="12" fill="#C62828"
+    style="filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5))"/>
+  <rect x="52" y="30" width="76" height="106" rx="12" fill="none"
+    stroke="rgba(255,255,255,0.35)" stroke-width="2.5"/>
+  <rect x="58" y="36" width="64" height="94" rx="8" fill="url(#card-shine)"/>
+
+  <!-- 12 central gros -->
+  <text x="90" y="90" text-anchor="middle" dominant-baseline="middle"
+    fill="white" font-size="48" font-weight="900"
+    font-family="Arial Rounded MT Bold, Arial, sans-serif">12</text>
+
+  <!-- Petit 12 haut gauche -->
+  <text x="66" y="50" text-anchor="middle" dominant-baseline="middle"
+    fill="rgba(255,255,255,0.8)" font-size="14" font-weight="700"
+    font-family="Arial Rounded MT Bold, Arial, sans-serif">12</text>
+
+  <!-- Petit 12 bas droite retourné -->
+  <text x="114" y="120" text-anchor="middle" dominant-baseline="middle"
+    fill="rgba(255,255,255,0.8)" font-size="14" font-weight="700"
+    font-family="Arial Rounded MT Bold, Arial, sans-serif"
+    transform="rotate(180 114 120)">12</text>
+
+  <!-- Nom en bas -->
+  <text x="90" y="158" text-anchor="middle" dominant-baseline="middle"
+    fill="rgba(255,255,255,0.9)" font-size="16" font-weight="700"
+    font-family="Arial Rounded MT Bold, Arial, sans-serif" letter-spacing="1">Skyjo</text>
+</svg>

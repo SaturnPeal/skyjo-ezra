@@ -13,31 +13,45 @@ function getCardColor(value) {
 
 export default function RoundEntry({ players, scores, onRoundComplete, onMenu }) {
   const [playerIdx, setPlayerIdx] = useState(0);
-  const [roundScores, setRoundScores] = useState(
-    () => Object.fromEntries(players.map(p => [p, 0]))
+  // Cartes tapées par joueur — permet de revenir en arrière sans rien perdre
+  const [tappedByPlayer, setTappedByPlayer] = useState(
+    () => players.map(() => [])
   );
-  const [tapped, setTapped] = useState([]);
 
   const currentPlayer = players[playerIdx];
+  const tapped = tappedByPlayer[playerIdx];
   const currentTotal = tapped.reduce((s, v) => s + v, 0);
   const isLast = playerIdx === players.length - 1;
+  const isFirst = playerIdx === 0;
 
   function handleCardTap(value) {
-    setTapped(prev => [...prev, value]);
+    setTappedByPlayer(prev => {
+      const updated = [...prev];
+      updated[playerIdx] = [...updated[playerIdx], value];
+      return updated;
+    });
   }
 
   function handleUndo() {
-    setTapped(prev => prev.slice(0, -1));
+    setTappedByPlayer(prev => {
+      const updated = [...prev];
+      updated[playerIdx] = updated[playerIdx].slice(0, -1);
+      return updated;
+    });
+  }
+
+  function handlePrevious() {
+    if (!isFirst) setPlayerIdx(i => i - 1);
   }
 
   function handleNext() {
-    const updatedScores = { ...roundScores, [currentPlayer]: currentTotal };
-    setRoundScores(updatedScores);
     if (isLast) {
+      const updatedScores = Object.fromEntries(
+        players.map((p, i) => [p, tappedByPlayer[i].reduce((s, v) => s + v, 0)])
+      );
       onRoundComplete(updatedScores);
     } else {
       setPlayerIdx(i => i + 1);
-      setTapped([]);
     }
   }
 
@@ -89,6 +103,9 @@ export default function RoundEntry({ players, scores, onRoundComplete, onMenu })
           {tapped.length > 7 && <span className="re-tapped-more">+{tapped.length - 7}</span>}
         </div>
         <div className="re-actions">
+          {!isFirst && (
+            <button className="btn-prev-player" onClick={handlePrevious}>← Précédent</button>
+          )}
           {tapped.length > 0 && (
             <button className="btn-undo" onClick={handleUndo}>↩ Annuler</button>
           )}

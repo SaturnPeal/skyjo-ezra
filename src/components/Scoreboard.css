@@ -108,3 +108,27 @@
 .btn-next-round { background: linear-gradient(135deg, #3b82f6, #8b5cf6); }
 .btn-endgame    { background: linear-gradient(135deg, #f59e0b, #f97316); }
 .btn-next-round:active, .btn-endgame:active { transform: scale(0.93); }
+
+.sb-timeup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.sb-timeup-text {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.3rem;
+  color: #fde68a;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.sb-timeup-btns {
+  display: flex;
+  gap: 16px;
+}
+.sb-timeup-btns .btn-next-round,
+.sb-timeup-btns .btn-endgame {
+  min-height: 68px;
+  padding: 0 24px;
+  font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+}

@@ -19,17 +19,22 @@ export function useGameState() {
   const [scores, setScores]             = useState(saved?.scores         ?? {});
   const [roundHistory, setRoundHistory] = useState(saved?.roundHistory   ?? []);
   const [scoreLimit, setScoreLimit]     = useState(saved?.scoreLimit     ?? 100);
+  const [timeLimit, setTimeLimit]       = useState(saved?.timeLimit      ?? null);
+  const [startTime, setStartTime]       = useState(saved?.startTime      ?? null);
 
   // Sauvegarde automatique à chaque changement
   useEffect(() => {
     if (players.length > 0) {
-      localStorage.setItem(SAVE_KEY, JSON.stringify({ players, scores, roundHistory, scoreLimit }));
+      localStorage.setItem(SAVE_KEY, JSON.stringify({ players, scores, roundHistory, scoreLimit, timeLimit, startTime }));
     }
-  }, [players, scores, roundHistory, scoreLimit]);
+  }, [players, scores, roundHistory, scoreLimit, timeLimit, startTime]);
 
-  function startGame(selectedPlayers, limit = 100) {
+  function startGame(selectedPlayers, limit = 100, timeLimitMinutes = null) {
+    const now = Date.now();
     setPlayers(selectedPlayers);
     setScoreLimit(limit);
+    setTimeLimit(timeLimitMinutes);
+    setStartTime(now);
     const initial = {};
     selectedPlayers.forEach(p => (initial[p] = 0));
     setScores(initial);
@@ -39,6 +44,8 @@ export function useGameState() {
       scores: initial,
       roundHistory: [],
       scoreLimit: limit,
+      timeLimit: timeLimitMinutes,
+      startTime: now,
     }));
   }
 
@@ -59,6 +66,8 @@ export function useGameState() {
     setScores({});
     setRoundHistory([]);
     setScoreLimit(100);
+    setTimeLimit(null);
+    setStartTime(null);
   }
 
   function isGameOver() {
@@ -74,6 +83,8 @@ export function useGameState() {
     players,
     scores,
     scoreLimit,
+    timeLimit,
+    startTime,
     roundHistory,
     startGame,
     applyRound,
